@@ -4,6 +4,7 @@ import React from 'react';
 import {StylesProvider} from '@material-ui/core/styles';
 import Layout from "./Layout/Layout";
 import Navigation from "./Navigation/Navigation";
+import Landing from "./Landing/Landing";
 import Footer from "./Footer/Footer";
 
 // Styles
@@ -14,7 +15,7 @@ function App() {
         <StylesProvider injectFirst>
             <Layout>
                 <Navigation/>
-                <main>Main content</main>
+                <Landing/>
                 <Footer/>
             </Layout>
         </StylesProvider>
