@@ -1,0 +1,9 @@
+.Results {
+    background-color: red;
+    height: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
