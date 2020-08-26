@@ -6,7 +6,7 @@ class Movies {
 
     getMovies(query: String) {
         console.log('test');
-        return (<h1>Tstssss</h1>);
+        return (<h1>ss</h1>);
     }
 }
 
