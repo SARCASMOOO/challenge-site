@@ -16,11 +16,7 @@ class Movies {
     getMoviesBySearch(search: String, page: number) {
         console.log(this.imdbURL);
         const queryString = '&type=movie&page=' + page + '&s=' + search;
-        axios.get((this.imdbURL + queryString)).then((response) => {
-                console.log('Movies are: ', response.data.Search);
-            }
-        );
-        return (<h1>s</h1>);
+        return axios.get((this.imdbURL + queryString));
     }
 }
 
