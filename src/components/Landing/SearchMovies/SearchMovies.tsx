@@ -13,7 +13,7 @@ const SearchMovies = ({}: Props) => (
     <Container className={styles.SearchMovies}>
         <Typography variant='h3' component='h3' className={styles.Title} align='center'>Shopify Award Show</Typography>
         <SearchBar/>
-        <div>{movie.getMovies('')}</div>
+        <div>{movie.getMoviesBySearch('300', 1)}</div>
     </Container>
 );
 
