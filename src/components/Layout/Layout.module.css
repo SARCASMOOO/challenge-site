@@ -1,0 +1,6 @@
+.Layout {
+    background-color: var(--dark-purple-bg-color);
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 12fr 1fr;
+}
