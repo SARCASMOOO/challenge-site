@@ -4,9 +4,7 @@ import styles from './Navigation.module.css';
 interface Props {}
 
 const Navigation = ({}: Props) => (
-    <div className={styles.Navigation}>
-        <p>Navigation</p>
-    </div>
+    <div className={styles.Navigation} />
 );
 
 export default Navigation;
