@@ -12,11 +12,11 @@ const Movie = ({Poster, Title, Year, imdbID}: MovieModel) => (console.log(Poster
             title={Title}
         />
         <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-                {Year}
+            <Typography gutterBottom variant="h5" component="h5">
+                {Title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-                {imdbID}
+                {Year}
             </Typography>
         </CardContent>
         <CardActions>
