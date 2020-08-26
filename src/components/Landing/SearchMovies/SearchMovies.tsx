@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar/SearchBar";
 interface Props {}
 
 const SearchMovies = ({}: Props) => (
-    <Container>
+    <Container className={styles.SearchMovies}>
         <Typography variant='h3' component='h3' className={styles.Title} align='center'>Shopify Award Show</Typography>
         <SearchBar/>
         <h1>Results</h1>

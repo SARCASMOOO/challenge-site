@@ -1,6 +1,11 @@
 .SearchMovies {
-
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 50px;
+    align-items: center;
 }
+
 .Title {
     color: white;
     margin-top: 100px;
