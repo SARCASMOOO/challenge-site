@@ -5,7 +5,7 @@ interface Props {}
 
 const Footer = ({}: Props) => (
     <div className={styles.Footer}>
-        <p>Footer</p>
+        <h1>Footer</h1>
     </div>
 );
 
