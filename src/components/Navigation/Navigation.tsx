@@ -5,7 +5,7 @@ interface Props {}
 
 const Navigation = ({}: Props) => (
     <div className={styles.Navigation}>
-        <h1>Navigation</h1>
+        <p>Navigation</p>
     </div>
 );
 
