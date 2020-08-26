@@ -5,7 +5,8 @@ interface Props {}
 
 const Landing = ({}: Props) => (
     <main className={styles.Main}>
-        <p>main</p>
+        <div style={{backgroundColor: 'cyan'}}>search area</div>
+        <div>list area</div>
     </main>
 );
 

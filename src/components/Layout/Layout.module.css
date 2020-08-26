@@ -2,5 +2,6 @@
     background-color: var(--dark-purple-bg-color);
     display: grid;
     height: 100vh;
+    min-width: 400px;
     grid-template-rows: 50px auto 50px;
 }

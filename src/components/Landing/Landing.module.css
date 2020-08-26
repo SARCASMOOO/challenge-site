@@ -1,1 +1,6 @@
-.Main {}
+.Main {
+    display: grid;
+    height: 100%;
+    min-width: 224px;
+    grid-template-columns: 10fr 4fr;
+}
