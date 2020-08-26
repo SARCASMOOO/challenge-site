@@ -1,6 +1,6 @@
 export default interface MovieModel {
-    poster: string;
-    title: string
-    year: string
+    Poster: string;
+    Title: string
+    Year: string
     imdbID: string;
 }
