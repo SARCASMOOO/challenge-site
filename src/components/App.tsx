@@ -6,7 +6,11 @@ import './App.css';
 function App() {
     return (
         <StylesProvider injectFirst>
-            <Layout />
+            <Layout>
+                <nav>Navigation</nav>
+                <main>Main content</main>
+                <footer>Footer</footer>
+            </Layout>
         </StylesProvider>
 )
     ;
