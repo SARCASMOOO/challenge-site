@@ -1,11 +1,16 @@
 import React from "react";
+
+// Components
+import SearchMovies from "./SearchMovies/SearchMovies";
+
+// Styles
 import styles from './Landing.module.css';
 
 interface Props {}
 
 const Landing = ({}: Props) => (
     <main className={styles.Main}>
-        <div style={{backgroundColor: 'cyan'}}>search area</div>
+        <SearchMovies/>
         <div>list area</div>
     </main>
 );
