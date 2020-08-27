@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './SidePanel.module.css';
+// import styles from './SidePanel.module.css';
 import {Paper, Tabs, Tab, List, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
 import MovieModel from "../../../models/Movie";
 
@@ -22,8 +22,7 @@ interface Props {
 const SidePanel = ({movies}: Props) => {
     console.log('Movies: ', movies);
     return (
-        <Paper square
-               className={styles.SidePanel}>
+        <Paper square>
             <Tabs
                 variant='fullWidth'
                 value={''}

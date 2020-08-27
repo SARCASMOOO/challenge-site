@@ -3,18 +3,39 @@ import styles from './SearchMovies.module.css';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import SearchBar from "./SearchBar/SearchBar";
+import Movies from '../../../axios/movies';
 import MovieModel from '../../../models/Movie';
 import Results from "./Results/Results";
 
 
-interface Props {
+interface State {
     movies: MovieModel[];
     page: number;
-    error: string;
-    searchMovie: (search: string) => void;
 }
 
-const SearchMovies = ({movies, page, error, searchMovie}: Props) => {
+function useMovies():  [State, string|undefined, (search: string) => void] {
+    const [state, setState] = useState<State>({movies: [], page: 1});
+    const [error, setError] = useState<string | undefined>(undefined);
+
+    const searchMovie = (search: string) => {
+        const movie = new Movies();
+        movie.getMoviesBySearch(search, 1).then((response) => {
+            if(response && response.data && response.data.Search) {
+                const newMovies: MovieModel[] = response.data.Search;
+                setState( ({page}: State)  => ({page: page, movies: newMovies}));
+            }
+        }).catch(error => {
+            console.log(`${error}`);
+            setError('Unable to grab movies.');
+        });
+    }
+
+    return [state, error, searchMovie];
+}
+
+const SearchMovies = (props: {}) => {
+    const [state, error, searchMovie] = useMovies();
+
     const onSearchChange = (searchString: string) => searchMovie(searchString);
 
     return (
@@ -23,7 +44,7 @@ const SearchMovies = ({movies, page, error, searchMovie}: Props) => {
                 Shopify Award Show
             </Typography>
             <SearchBar onChange={onSearchChange}/>
-            <Results movies={movies}/>
+            <Results movies={state.movies}/>
         </Container>
     );
 }
