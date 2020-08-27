@@ -11,11 +11,11 @@ interface Props {
 }
 
 const Results = ({movies, saveMovieAsNomination, removeMovieFromNomination}: Props) => (
-    <Container className={styles.Results}>
+    <div className={styles.Results}>
         {movies.map((movie) => <Movie movieData={movie} key={movie.imdbID}
                                       saveMovieAsNomination={saveMovieAsNomination}
                                       removeMovieFromNomination={removeMovieFromNomination}/>)}
-    </Container>
+    </div>
 );
 
 export default Results;
