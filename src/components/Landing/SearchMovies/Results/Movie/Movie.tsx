@@ -3,24 +3,31 @@ import MovieModel from "../../../../../models/Movie";
 import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
 import styles from './Movie.module.css';
 
-const Movie = ({Poster, Title, Year, imdbID}: MovieModel) => (console.log(Poster, Title, Year, imdbID),
+interface Props {
+    movieData: MovieModel;
+    saveMovieAsNomination: (id: string) => void;
+    removeMovieFromNomination: (id: string) => void;
+}
+//saveMovieAsNomination, removeMovieFromNomination
+// Poster, Title, Year, imdbID
+const Movie = ({movieData, saveMovieAsNomination, removeMovieFromNomination}: Props) => (
     <Card className={styles.Movie}>
         <CardMedia
             style={{height: '250px'}}
             component='img'
-            src={Poster}
-            title={Title}
+            src={movieData.Poster}
+            title={movieData.Title}
         />
         <CardContent>
             <Typography gutterBottom variant="h5" component="h5">
-                {Title}
+                {movieData.Title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-                {Year}
+                {movieData.Year}
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" onClick={() => {saveMovieAsNomination(movieData.imdbID)}}>
                 Nominate
             </Button>
         </CardActions>

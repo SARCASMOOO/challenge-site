@@ -7,14 +7,15 @@ import Movies from '../../../axios/movies';
 import MovieModel from '../../../models/Movie';
 import Results from "./Results/Results";
 
-
 interface Props {
     movieState: {movies: MovieModel[], page: number};
     error: string | undefined;
     searchMovie: (search: string) => void;
+    removeMovieFromNomination: (id: string) => void;
+    saveMovieAsNomination: (id: string) => void;
 }
 
-const SearchMovies = ({movieState, error, searchMovie}: Props) => {
+const SearchMovies = ({movieState, error, searchMovie, saveMovieAsNomination, removeMovieFromNomination}: Props) => {
     const onSearchChange = (searchString: string) => searchMovie(searchString);
 
     return (
@@ -23,7 +24,9 @@ const SearchMovies = ({movieState, error, searchMovie}: Props) => {
                 Shopify Award Show
             </Typography>
             <SearchBar onChange={onSearchChange}/>
-            <Results movies={movieState.movies}/>
+            <Results movies={movieState.movies}
+                     saveMovieAsNomination={saveMovieAsNomination}
+                     removeMovieFromNomination={removeMovieFromNomination}/>
         </Container>
     );
 }

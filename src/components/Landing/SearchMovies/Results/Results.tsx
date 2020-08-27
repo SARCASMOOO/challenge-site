@@ -6,11 +6,15 @@ import Movie from "./Movie/Movie";
 
 interface Props {
     movies: MovieModel[];
+    saveMovieAsNomination: (id: string) => void;
+    removeMovieFromNomination: (id: string) => void;
 }
 
-const Results = ({movies}: Props) => (
+const Results = ({movies, saveMovieAsNomination, removeMovieFromNomination}: Props) => (
     <Container className={styles.Results}>
-        {movies.map((movie) => <Movie {...movie} key={movie.imdbID}/>)}
+        {movies.map((movie) => <Movie movieData={movie} key={movie.imdbID}
+                                      saveMovieAsNomination={saveMovieAsNomination}
+                                      removeMovieFromNomination={removeMovieFromNomination}/>)}
     </Container>
 );
 

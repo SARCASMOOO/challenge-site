@@ -7,7 +7,7 @@ interface State {
     page: number;
 }
 
-function useMovies():  [State, string|undefined, (search: string) => void] {
+function useMovies():  [State, string | undefined, (search: string) => void, (id: string) => void, (id: string) => void] {
     const [state, setState] = useState<State>({movies: [], page: 1});
     const [error, setError] = useState<string | undefined>(undefined);
 
@@ -24,7 +24,15 @@ function useMovies():  [State, string|undefined, (search: string) => void] {
         });
     }
 
-    return [state, error, searchMovie];
+    const saveMovieAsNomination = (id: string) => {
+        console.log('Add movie to nomination: ', id);
+    }
+
+    const removeMovieFromNomination = (id: string) => {
+        console.log('Remove movie from nomination: ', id);
+    }
+
+    return [state, error, searchMovie, saveMovieAsNomination, removeMovieFromNomination];
 }
 
 export default useMovies;

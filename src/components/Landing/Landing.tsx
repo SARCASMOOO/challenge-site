@@ -10,11 +10,13 @@ import useMovies from "../../CustomHooks/useMovies";
 import MovieModel from "../../models/Movie";
 
 const Landing = (props: {}) => {
-    const [state, error, searchMovie] = useMovies();
+    const [state, error, searchMovie, saveMovieAsNomination, removeMovieFromNomination] = useMovies();
 
     return (
         <main className={styles.Main}>
-            <SearchMovies movieState={state} error={error} searchMovie={searchMovie}/>
+            <SearchMovies movieState={state} error={error} searchMovie={searchMovie}
+                          saveMovieAsNomination={saveMovieAsNomination}
+                          removeMovieFromNomination={removeMovieFromNomination}/>
             <SidePanel movies={[]}/>
         </main>
     )
