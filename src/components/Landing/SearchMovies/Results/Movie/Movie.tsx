@@ -27,7 +27,7 @@ const Movie = ({movieData, saveMovieAsNomination, removeMovieFromNomination, nom
         />
         <CardContent>
             <Typography gutterBottom variant="h5" component="h5">
-                {movieData.Title}
+                {(movieData.Title.length > 18) ? `${movieData.Title.substring(0, 20)}...` : movieData.Title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
                 {movieData.Year}
