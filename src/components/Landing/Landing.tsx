@@ -17,7 +17,7 @@ const Landing = (props: {}) => {
             <SearchMovies movieState={state} error={error} searchMovie={searchMovie}
                           saveMovieAsNomination={saveMovieAsNomination}
                           removeMovieFromNomination={removeMovieFromNomination}/>
-            <SidePanel movies={[]}/>
+            <SidePanel removeMovieFromNomination={removeMovieFromNomination} nominatedMovies={state.nominatedMovies} movies={state.movies}/>
         </main>
     )
 }
