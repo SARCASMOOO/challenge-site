@@ -30,7 +30,7 @@ const SidePanel = ({movies, nominatedMovies, removeMovieFromNomination}: Props) 
                 onChange={handleChange}
                 aria-label="disabled tabs example"
             >
-                <Tab label="Nominations" />
+                <Tab label={`Nominations (${nominatedMovies.length})`} />
                 <Tab label="Favourites" />
             </Tabs>
             <SidePanelItems removeMovieFromNomination={removeMovieFromNomination} movies={movies} nominatedMovies={nominatedMovies}/>
