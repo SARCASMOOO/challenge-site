@@ -1,3 +1,7 @@
 .SidePanel {
     background-color: #edebe9;
+    position: absolute;
+    height: 90vh;
+    right: 0;
+    top: 5vh;
 }
