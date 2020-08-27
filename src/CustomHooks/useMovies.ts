@@ -30,9 +30,12 @@ function useMovies():  [State, string | undefined, (search: string) => void, (id
     }
 
     const saveMovieAsNomination = (id: string) => {
+        // TODO: Disable movie when it is added. Remove disabled when removed.
         if(state.nominatedMovies.includes(id)) return;
         const newNominatedMovies = [...state.nominatedMovies];
+
         newNominatedMovies.push(id);
+
         setState( ({page, movies}: State)  => ({
             page: page,
             movies: movies,

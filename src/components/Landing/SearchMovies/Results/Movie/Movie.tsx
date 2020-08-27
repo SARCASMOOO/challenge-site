@@ -7,11 +7,18 @@ interface Props {
     movieData: MovieModel;
     saveMovieAsNomination: (id: string) => void;
     removeMovieFromNomination: (id: string) => void;
+    nominatedMovies: string[];
 }
 //saveMovieAsNomination, removeMovieFromNomination
 // Poster, Title, Year, imdbID
-const Movie = ({movieData, saveMovieAsNomination, removeMovieFromNomination}: Props) => (
-    <Card className={styles.Movie}>
+
+const Movie = ({movieData, saveMovieAsNomination, removeMovieFromNomination, nominatedMovies}: Props) => {
+    const isDisabled = nominatedMovies.includes(movieData.imdbID);
+    let classes = styles.Movie;
+    if(isDisabled) {
+        classes += ' ' + styles.Disabled;
+    }
+    return (<Card className={classes}>
         <CardMedia
             style={{height: '250px'}}
             component='img'
@@ -27,10 +34,11 @@ const Movie = ({movieData, saveMovieAsNomination, removeMovieFromNomination}: Pr
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small" color="primary" onClick={() => {saveMovieAsNomination(movieData.imdbID)}}>
+            <Button disabled={isDisabled} size="small" color="primary" onClick={() => {saveMovieAsNomination(movieData.imdbID)}}>
                 Nominate
             </Button>
         </CardActions>
     </Card>);
+}
 
 export default Movie;

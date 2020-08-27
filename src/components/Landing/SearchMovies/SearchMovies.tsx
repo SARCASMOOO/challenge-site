@@ -25,6 +25,7 @@ const SearchMovies = ({movieState, error, searchMovie, saveMovieAsNomination, re
             </Typography>
             <SearchBar onChange={onSearchChange}/>
             <Results movies={movieState.movies}
+                     nominatedMovies={movieState.nominatedMovies}
                      saveMovieAsNomination={saveMovieAsNomination}
                      removeMovieFromNomination={removeMovieFromNomination}/>
         </Container>

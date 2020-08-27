@@ -8,14 +8,17 @@ interface Props {
     movies: MovieModel[];
     saveMovieAsNomination: (id: string) => void;
     removeMovieFromNomination: (id: string) => void;
+    nominatedMovies: string[];
 }
 
-const Results = ({movies, saveMovieAsNomination, removeMovieFromNomination}: Props) => (
-    <div className={styles.Results}>
-        {movies.map((movie) => <Movie movieData={movie} key={movie.imdbID}
-                                      saveMovieAsNomination={saveMovieAsNomination}
-                                      removeMovieFromNomination={removeMovieFromNomination}/>)}
-    </div>
-);
+const Results = ({movies, saveMovieAsNomination, removeMovieFromNomination, nominatedMovies}: Props) => {
+    return (
+        <div className={styles.Results}>
+            {movies.map((movie) => <Movie movieData={movie} key={movie.imdbID}
+                                          nominatedMovies={nominatedMovies}
+                                          saveMovieAsNomination={saveMovieAsNomination}
+                                          removeMovieFromNomination={removeMovieFromNomination}/>)}
+        </div>);
+}
 
 export default Results;
