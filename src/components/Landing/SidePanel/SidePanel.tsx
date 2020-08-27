@@ -1,36 +1,35 @@
-import React from "react";
-// import styles from './SidePanel.module.css';
-import {Paper, Tabs, Tab, List, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import React, {useState} from 'react';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import styles from './SidePanel.module.css';
+
 import MovieModel from "../../../models/Movie";
-
-
-const MovieList = (<div>
-    <List component="nav" aria-label="main mailbox folders">
-        <ListItem button>
-            <ListItemText primary="Inbox"/>
-        </ListItem>
-        <ListItem button>
-            <ListItemText primary="Drafts"/>
-        </ListItem>
-    </List>
-</div>);
 
 interface Props {
     movies: MovieModel[];
 }
 
 const SidePanel = ({movies}: Props) => {
-    console.log('Movies: ', movies);
+
+    const [value, setValue] = useState(2);
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+        setValue(newValue);
+    };
+
     return (
-        <Paper square>
+        <Paper square className={styles.SidePanel}>
             <Tabs
+                value={value}
                 variant='fullWidth'
-                value={''}
+                indicatorColor="primary"
+                textColor="primary"
+                onChange={handleChange}
+                aria-label="disabled tabs example"
             >
-                <Tab label="Nominations"/>
-                <Tab label="Favourites"/>
+                <Tab label="Nominations" />
+                <Tab label="Favourites" />
             </Tabs>
-            {MovieList}
         </Paper>
     );
 }
