@@ -5,10 +5,11 @@ import MovieModel from "../models/Movie";
 interface State {
     movies: MovieModel[];
     page: number;
+    nominatedMovies: string[];
 }
 
 function useMovies():  [State, string | undefined, (search: string) => void, (id: string) => void, (id: string) => void] {
-    const [state, setState] = useState<State>({movies: [], page: 1});
+    const [state, setState] = useState<State>({movies: [], page: 1, nominatedMovies: []});
     const [error, setError] = useState<string | undefined>(undefined);
 
     const searchMovie = (search: string) => {
@@ -16,7 +17,11 @@ function useMovies():  [State, string | undefined, (search: string) => void, (id
         movie.getMoviesBySearch(search, 1).then((response) => {
             if(response && response.data && response.data.Search) {
                 const newMovies: MovieModel[] = response.data.Search;
-                setState( ({page}: State)  => ({page: page, movies: newMovies}));
+                setState( ({page, nominatedMovies}: State)  => ({
+                    page: page,
+                    movies: newMovies,
+                    nominatedMovies: nominatedMovies
+                }));
             }
         }).catch(error => {
             console.log(`${error}`);
@@ -25,7 +30,17 @@ function useMovies():  [State, string | undefined, (search: string) => void, (id
     }
 
     const saveMovieAsNomination = (id: string) => {
-        console.log('Add movie to nomination: ', id);
+        if(state.nominatedMovies.includes(id)) return;
+        const newNominatedMovies = [...state.nominatedMovies];
+        newNominatedMovies.push(id);
+        setState( ({page, movies}: State)  => ({
+            page: page,
+            movies: movies,
+            nominatedMovies: newNominatedMovies
+        }));
+
+        console.log('Movie nominations: ', newNominatedMovies);
+        console.log('Movie ID added: ', id);
     }
 
     const removeMovieFromNomination = (id: string) => {

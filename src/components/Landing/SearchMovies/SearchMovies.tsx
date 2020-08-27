@@ -8,7 +8,7 @@ import MovieModel from '../../../models/Movie';
 import Results from "./Results/Results";
 
 interface Props {
-    movieState: {movies: MovieModel[], page: number};
+    movieState: {movies: MovieModel[], page: number, nominatedMovies: string[]};
     error: string | undefined;
     searchMovie: (search: string) => void;
     removeMovieFromNomination: (id: string) => void;
