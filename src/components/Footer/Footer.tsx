@@ -4,9 +4,7 @@ import styles from './Footer.module.css';
 interface Props {}
 
 const Footer = ({}: Props) => (
-    <div className={styles.Footer}>
-        <p>Footer</p>
-    </div>
+    <div className={styles.Footer} />
 );
 
 export default Footer;

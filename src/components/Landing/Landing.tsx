@@ -5,13 +5,12 @@ import SearchMovies from "./SearchMovies/SearchMovies";
 
 // Styles
 import styles from './Landing.module.css';
+import SidePanel from "./SidePanel/SidePanel";
 
-interface Props {}
-
-const Landing = ({}: Props) => (
+const Landing = (props: {}) => (
     <main className={styles.Main}>
         <SearchMovies/>
-        <div>list area</div>
+        <SidePanel/>
     </main>
 );
 

@@ -7,30 +7,36 @@ import Movies from '../../../axios/movies';
 import MovieModel from '../../../models/Movie';
 import Results from "./Results/Results";
 
-interface Props {}
 
 interface State {
     movies: MovieModel[];
     page: number;
 }
 
-const movie = new Movies();
-
-const SearchMovies = ({}: Props) => {
+function useMovies():  [State, string|undefined, (search: string) => void] {
     const [state, setState] = useState<State>({movies: [], page: 1});
+    const [error, setError] = useState<string | undefined>(undefined);
 
-    const onSearchChange = (searchString: string) => {
-        movie.getMoviesBySearch(searchString, 1).then((response) => {
+    const searchMovie = (search: string) => {
+        const movie = new Movies();
+        movie.getMoviesBySearch(search, 1).then((response) => {
             if(response && response.data && response.data.Search) {
                 const newMovies: MovieModel[] = response.data.Search;
-                setState( ({page}: State)  => {
-                    return ({page: page, movies: newMovies});
-                });
+                setState( ({page}: State)  => ({page: page, movies: newMovies}));
             }
-        }).catch(() => {
-            console.log('Unable to grab movies.');
+        }).catch(error => {
+            console.log(`${error}`);
+            setError('Unable to grab movies.');
         });
     }
+
+    return [state, error, searchMovie];
+}
+
+const SearchMovies = (props: {}) => {
+    const [state, error, searchMovie] = useMovies();
+
+    const onSearchChange = (searchString: string) => searchMovie(searchString);
 
     return (
         <Container className={styles.SearchMovies}>
