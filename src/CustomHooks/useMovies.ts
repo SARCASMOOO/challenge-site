@@ -1,11 +1,11 @@
-import {useState, useContext} from "react";
+import {useState} from "react";
+
 import Movies from "../axios/movies";
 import MovieModel from "../models/Movie";
-import { moviesContext } from "../global_state/moviesGlobal";
 
 
 function useMovies(): [MovieModel[], string | undefined, (search: string) => void] {
-    const [movies, setMovies] = useContext(moviesContext);
+    const [movies, setMovies] = useState<MovieModel[]>([]);
     const [error, setError] = useState<string | undefined>(undefined);
 
     const searchMovie = (search: string) => {

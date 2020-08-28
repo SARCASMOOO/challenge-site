@@ -7,16 +7,16 @@ import styles from './Landing.module.css';
 import SearchMovies from "./SearchMovies/SearchMovies";
 import SidePanel from "./SidePanel/SidePanel";
 
-// Hooks
-import { movieProvider } from "../../global_state/moviesGlobal";
+// Provider
+import { NominatedProvider } from "../../global_state/nominatedMoviesGlobal";
 
 const Landing = (props: {}) => {
     return (
         <main className={styles.Main}>
             <SearchMovies />
-            {/*<SidePanel removeMovieFromNomination={removeMovieFromNomination} nominatedMovies={state.nominatedMovies} movies={state.movies}/>*/}
+            <SidePanel />
         </main>
     )
 }
 
-export default movieProvider(Landing);
+export default NominatedProvider(Landing);

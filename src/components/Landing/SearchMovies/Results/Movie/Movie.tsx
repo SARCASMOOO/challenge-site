@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // Styles
 import styles from './Movie.module.css';
@@ -6,18 +6,36 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, 
 
 // Model
 import MovieModel from "../../../../../models/Movie";
+import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
 
 function truncateMovieTitle(title: string) {
     return (title.length > 18) ? title.substring(0, 20) + "..." : title;
 }
 
+function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] {
+    const [nominatedMovies, setNominatedMovie] = useContext(NominatedContext);
+
+    console.log(nominatedMovies);
+    const movieFromNomination = nominatedMovies.findIndex(nomMovie => nomMovie.imdbID === movie_id);
+    const isNominated = movieFromNomination !== -1;
+
+    const nominate = (movie: MovieModel) => {
+        if (isNominated) return; // already nominated
+
+        setNominatedMovie(nominatedMovies => [...nominatedMovies, movie]);
+        console.log("HEHE");
+    }
+
+    return [isNominated, nominate];
+}
+
 const Movie = ({movie}: {movie: MovieModel}) => {
-    const isDisabled = false; // TODO
-    
+    const [isNominated, nominate] = useNominated(movie.imdbID);
+
     const title = truncateMovieTitle(movie.Title);
 
-    return (<Card>
+    return (<Card className={styles.Movie}>
         <CardMedia
             style={{height: '250px'}}
             component='img'
@@ -33,7 +51,7 @@ const Movie = ({movie}: {movie: MovieModel}) => {
             </Typography>
         </CardContent>
         <CardActions>
-            <Button disabled={isDisabled} size="small" color="primary" >
+            <Button disabled={isNominated} size="small" color="primary" onClick={() => nominate(movie)}>
                 Nominate
             </Button>
         </CardActions>
