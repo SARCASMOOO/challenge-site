@@ -1,7 +1,8 @@
 import React from 'react';
 
-// Components
 import {StylesProvider} from '@material-ui/core/styles';
+
+// Components
 import Layout from "./Layout/Layout";
 import Navigation from "./Navigation/Navigation";
 import Landing from "./Landing/Landing";
@@ -19,8 +20,7 @@ function App() {
                 <Footer/>
             </Layout>
         </StylesProvider>
-)
-    ;
+    );
 }
 
 export default App;

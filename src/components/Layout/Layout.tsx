@@ -1,11 +1,7 @@
-import React, {Fragment} from "react";
+import React from "react";
 import styles from './Layout.module.css';
 
-interface Props {
-    children: React.ReactNode;
-}
-
-const Layout = ({children}: Props) => (
+const Layout = ({children}: React.PropsWithChildren<{}>) => (
     <div className={styles.Layout}>
         {children}
     </div>

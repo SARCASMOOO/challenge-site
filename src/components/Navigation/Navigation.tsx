@@ -1,9 +1,7 @@
-import React, {Fragment} from "react";
+import React from "react";
 import styles from './Navigation.module.css';
 
-interface Props {}
-
-const Navigation = ({}: Props) => (
+const Navigation = (_: {}) => (
     <div className={styles.Navigation} />
 );
 
