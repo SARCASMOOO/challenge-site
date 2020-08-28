@@ -8,7 +8,6 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, 
 import MovieModel from "../../../../../models/Movie";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
-
 function truncateMovieTitle(title: string) {
     return (title.length > 18) ? title.substring(0, 20) + "..." : title;
 }
@@ -16,7 +15,6 @@ function truncateMovieTitle(title: string) {
 function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] {
     const [nominatedMovies, setNominatedMovie] = useContext(NominatedContext);
 
-    console.log(nominatedMovies);
     const movieFromNomination = nominatedMovies.findIndex(nomMovie => nomMovie.imdbID === movie_id);
     const isNominated = movieFromNomination !== -1;
 
@@ -24,7 +22,6 @@ function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] 
         if (isNominated) return; // already nominated
 
         setNominatedMovie(nominatedMovies => [...nominatedMovies, movie]);
-        console.log("HEHE");
     }
 
     return [isNominated, nominate];

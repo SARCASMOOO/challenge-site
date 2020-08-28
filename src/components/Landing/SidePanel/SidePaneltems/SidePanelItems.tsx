@@ -14,7 +14,7 @@ function useNomination(): [MovieModel[], (movie_id: string) => void] {
     const removeNomination = (movie_id: string) => {
         setNominatedMovies(nominatedMov => {
             const nomMovieCopy = [...nominatedMov];
-            const movieToRemove = nomMovieCopy.findIndex(mov => mov.imdbID = movie_id);
+            const movieToRemove = nomMovieCopy.findIndex(mov => mov.imdbID === movie_id);
             
             if (movieToRemove !== -1) nomMovieCopy.splice(movieToRemove, 1);
 
@@ -49,7 +49,7 @@ function NominatedMovieCard({movie, onRemove}: {movie:MovieModel, onRemove: () =
                     Remove
                 </Button>
             </CardActions>
-        </Card>);
+        </Card>
     </ListItem>);
 }
 
