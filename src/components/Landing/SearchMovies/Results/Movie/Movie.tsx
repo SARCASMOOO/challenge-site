@@ -1,40 +1,39 @@
 import React from "react";
-import MovieModel from "../../../../../models/Movie";
-import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
+
+// Styles
 import styles from './Movie.module.css';
+import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
 
-interface Props {
-    movieData: MovieModel;
-    saveMovieAsNomination: (id: string) => void;
-    removeMovieFromNomination: (id: string) => void;
-    nominatedMovies: string[];
+// Model
+import MovieModel from "../../../../../models/Movie";
+
+
+function truncateMovieTitle(title: string) {
+    return (title.length > 18) ? title.substring(0, 20) + "..." : title;
 }
-//saveMovieAsNomination, removeMovieFromNomination
-// Poster, Title, Year, imdbID
 
-const Movie = ({movieData, saveMovieAsNomination, removeMovieFromNomination, nominatedMovies}: Props) => {
-    const isDisabled = nominatedMovies.includes(movieData.imdbID);
-    let classes = styles.Movie;
-    if(isDisabled) {
-        classes += ' ' + styles.Disabled;
-    }
-    return (<Card className={classes}>
+const Movie = ({movie}: {movie: MovieModel}) => {
+    const isDisabled = false; // TODO
+    
+    const title = truncateMovieTitle(movie.Title);
+
+    return (<Card>
         <CardMedia
             style={{height: '250px'}}
             component='img'
-            src={movieData.Poster}
-            title={movieData.Title}
+            src={movie.Poster}
+            title={movie.Title}
         />
         <CardContent>
             <Typography gutterBottom variant="h5" component="h5">
-                {(movieData.Title.length > 18) ? `${movieData.Title.substring(0, 20)}...` : movieData.Title}
+                {title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-                {movieData.Year}
+                {movie.Year}
             </Typography>
         </CardContent>
         <CardActions>
-            <Button disabled={isDisabled} size="small" color="primary" onClick={() => {saveMovieAsNomination(movieData.imdbID)}}>
+            <Button disabled={isDisabled} size="small" color="primary" >
                 Nominate
             </Button>
         </CardActions>

@@ -1,21 +1,20 @@
-import React, {useState} from "react";
+import React from "react";
+
+// Styles
 import styles from './SearchMovies.module.css';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+
+// Components
+import Container from '@material-ui/core/Container';
 import SearchBar from "./SearchBar/SearchBar";
-import Movies from '../../../axios/movies';
-import MovieModel from '../../../models/Movie';
 import Results from "./Results/Results";
 
-interface Props {
-    movieState: {movies: MovieModel[], page: number, nominatedMovies: string[]};
-    error: string | undefined;
-    searchMovie: (search: string) => void;
-    removeMovieFromNomination: (id: string) => void;
-    saveMovieAsNomination: (id: string) => void;
-}
+// Model
+import useMovies from "../../../CustomHooks/useMovies";
 
-const SearchMovies = ({movieState, error, searchMovie, saveMovieAsNomination, removeMovieFromNomination}: Props) => {
+const SearchMovies = (_: {}) => {
+    const [movies, error, searchMovie] = useMovies();
+
     const onSearchChange = (searchString: string) => searchMovie(searchString);
 
     return (
@@ -24,10 +23,7 @@ const SearchMovies = ({movieState, error, searchMovie, saveMovieAsNomination, re
                 Shopify Award Show
             </Typography>
             <SearchBar onChange={onSearchChange}/>
-            <Results movies={movieState.movies}
-                     nominatedMovies={movieState.nominatedMovies}
-                     saveMovieAsNomination={saveMovieAsNomination}
-                     removeMovieFromNomination={removeMovieFromNomination}/>
+            <Results movies={movies} />
         </Container>
     );
 }

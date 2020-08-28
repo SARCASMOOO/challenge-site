@@ -8,19 +8,15 @@ import SearchMovies from "./SearchMovies/SearchMovies";
 import SidePanel from "./SidePanel/SidePanel";
 
 // Hooks
-import useMovies from "../../CustomHooks/useMovies";
+import { movieProvider } from "../../global_state/moviesGlobal";
 
 const Landing = (props: {}) => {
-    const [state, error, searchMovie, saveMovieAsNomination, removeMovieFromNomination] = useMovies();
-
     return (
         <main className={styles.Main}>
-            <SearchMovies movieState={state} error={error} searchMovie={searchMovie}
-                          saveMovieAsNomination={saveMovieAsNomination}
-                          removeMovieFromNomination={removeMovieFromNomination}/>
-            <SidePanel removeMovieFromNomination={removeMovieFromNomination} nominatedMovies={state.nominatedMovies} movies={state.movies}/>
+            <SearchMovies />
+            {/*<SidePanel removeMovieFromNomination={removeMovieFromNomination} nominatedMovies={state.nominatedMovies} movies={state.movies}/>*/}
         </main>
     )
 }
 
-export default Landing;
+export default movieProvider(Landing);

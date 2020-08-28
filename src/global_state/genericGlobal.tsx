@@ -9,6 +9,7 @@ function createGlobalState<T>(defaultValue: T) {
     const GlobalContext = React.createContext<StateAndDispatcher<T>>([defaultValue, (val) => {} ]);
 
     const Provider = <P extends {}>(Component: React.ComponentType<P>) => (props: P) => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         const [value, setValue] = React.useState(defaultValue);
 
         return (
