@@ -29,7 +29,7 @@ function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] 
 }
 
 
-const Movie = ({movie}: {movie: MovieModel}) => {
+function SearchMovieCard({movie}: {movie: MovieModel}) {
     const [isNominated, nominate] = useNominated(movie.imdbID)
     const onClick = () => nominate(movie);
 
@@ -44,4 +44,4 @@ const Movie = ({movie}: {movie: MovieModel}) => {
     );
 }
 
-export default Movie;
+export default SearchMovieCard;
