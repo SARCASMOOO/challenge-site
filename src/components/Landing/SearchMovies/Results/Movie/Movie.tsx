@@ -7,8 +7,9 @@ import styles from './Movie.module.css';
 import MovieModel from "../../../../../models/Movie";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
-// UI
+// Assets
 import placeholderImage from '../../../../../assets/images/placeholder.svg';
+import trophy from '../../../../../assets/images/trophy2.svg';
 
 
 function truncateMovieTitle(title: string) {
@@ -72,6 +73,7 @@ const Movie = ({movie}: {movie: MovieModel}) => {
                     Nominate
                 </Button>
             </div>
+            {isNominated ? <img src={trophy} alt="trophy" className={styles.Trophy}/> : null}
         </div>
     </div>);
 }

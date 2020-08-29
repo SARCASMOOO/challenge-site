@@ -38,10 +38,19 @@
 
 .Info {
     padding: 5px 15px;
+    position: relative;
 }
 
 .Info > div {
     margin-bottom: 4px;
+}
+
+.Trophy {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 30px;
+    fill: #FFC802;
 }
 
 /* Button */
