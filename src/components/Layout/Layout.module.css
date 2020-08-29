@@ -1,5 +1,5 @@
 .Layout {
-    background-color: var(--black-bg-color);
+    background-color: var(--landing-bg-color);
     display: grid;
     height: 100vh;
     min-width: 400px;

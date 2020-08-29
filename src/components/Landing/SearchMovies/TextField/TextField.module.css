@@ -1,0 +1,15 @@
+.TextField {
+    font: inherit;
+    outline: none;
+    border: 1px solid #1E1E1E;
+    background-color:  #1E1E1E;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 6px;
+    color: whitesmoke;
+}
+
+.TextField:focus {
+    outline: none !important;
+    border: 2px solid rgb(48, 47, 47);
+}
