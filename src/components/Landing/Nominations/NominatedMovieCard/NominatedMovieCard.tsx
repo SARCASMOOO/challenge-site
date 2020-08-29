@@ -26,7 +26,8 @@ function useRemoveNomination() {
 }
 
 function truncateMovieTitle(title: string) {
-    return (title.length > 14) ? title.substring(0, 16) + "..." : title;
+    const truncateSize = 22;
+    return (title.length > truncateSize) ? title.substring(0, truncateSize - 3) + "..." : title;
 }
 
 function NominatedMovieCard({movie}: {movie: MovieModel}) {

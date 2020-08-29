@@ -9,8 +9,8 @@ import MovieCard from "../../../MovieCard/MovieCard";
 
 
 function truncateMovieTitle(title: string) {
-    const truncateSize = 18;
-    return (title.length > truncateSize) ? title.substring(0, truncateSize) + "..." : title;
+    const truncateSize = 22;
+    return (title.length > truncateSize) ? title.substring(0, truncateSize - 3) + "..." : title;
 }
 
 function useNominateMovie(movie_id: string): [boolean, (movie: MovieModel) => void] {
