@@ -1,15 +1,11 @@
 import React, { useContext } from "react";
 
-// Styles
-import styles from './Movie.module.css';
-
 // Model
 import MovieModel from "../../../../../models/Movie";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
-// Assets
-import placeholderImage from '../../../../../assets/images/placeholder.svg';
-import trophy from '../../../../../assets/images/trophy.svg';
+// Common component
+import MovieCard from "../../../MovieCard/MovieCard";
 
 
 function truncateMovieTitle(title: string) {
@@ -32,54 +28,20 @@ function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] 
     return [isNominated, nominate];
 }
 
-function Button({children, disabled = false, onClick}: React.PropsWithChildren<{disabled?: boolean, onClick?: () => void}>) {
-    const handleClick = () => {
-        if (disabled) return;
-
-        onClick?.();
-    };
-
-    const disabledStyle = disabled ? styles.Disabled : styles.Enabled;
-
-    return ( 
-        <div onClick={handleClick} className={`${styles.Button} ${disabledStyle}`}>
-            {children}
-        </div>
-    );
-}
 
 const Movie = ({movie}: {movie: MovieModel}) => {
     const [isNominated, nominate] = useNominated(movie.imdbID)
     const onClick = () => nominate(movie);
 
-    const cardImage = (movie.Poster === 'N/A') ? placeholderImage : movie.Poster;
+    const cardImage = (movie.Poster === 'N/A') ? undefined : movie.Poster;
     const title = truncateMovieTitle(movie.Title);
 
-    const placeholder = (movie.Poster === 'N/A') ? styles.PlaceholderImage : undefined;
-
     return (
-    <div className={styles.Movie}>
-        <div className={`${styles.Image} ${placeholder}`} style={{ backgroundImage: `url(${cardImage})`}}>
-        </div>
-        <div className={styles.Info}>
-            <div className={styles.Title}>
-                <h2>{title}</h2>
-            </div>
-            <div className={styles.Year}>
-                {movie.Year}
-            </div>
-            <div>
-                <Button disabled={isNominated} onClick={onClick}>
-                    Nominate
-                </Button>
-            </div>
-            {isNominated ? 
-            <div className={styles.Trophy}>
-                <img src={trophy} alt="trophy"/>
-            </div>
-             : null}
-        </div>
-    </div>);
+        <MovieCard movie={{title: title, imageSrc: cardImage, year: movie.Year}} 
+            actionName='Nominate' 
+            onClick={onClick} 
+            isNominated={isNominated} />
+    );
 }
 
 export default Movie;

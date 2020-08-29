@@ -1,8 +1,4 @@
 .Nominations {
-    background-color: #edebe9;
-    position: absolute;
-    height: 90vh;
-    right: 0;
-    top: 5vh;
+    height: 100%;
     overflow-y: scroll;
 }

@@ -1,0 +1,14 @@
+.Button {
+    padding: 10px 0px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 95px;
+}
+
+.Enabled:hover {
+    color: #FAC403;
+}
+
+.Disabled {
+    color: gray;
+}
