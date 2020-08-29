@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 // Styles
 import styles from './Movie.module.css';
-import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 // Model
 import MovieModel from "../../../../../models/Movie";
@@ -10,8 +10,11 @@ import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlo
 
 // UI
 import defaultImage from '../../../../../assets/images/blank_image.png';
+
+
 function truncateMovieTitle(title: string) {
-    return (title.length > 18) ? title.substring(0, 20) + "..." : title;
+    const truncateSize = 18;
+    return (title.length > truncateSize) ? title.substring(0, truncateSize) + "..." : title;
 }
 
 function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] {
@@ -34,28 +37,24 @@ const Movie = ({movie}: {movie: MovieModel}) => {
     const cardImage = (movie.Poster === 'N/A') ? defaultImage : movie.Poster;
     const title = truncateMovieTitle(movie.Title);
 
-    return (<Card className={styles.Movie}>
-        <CardMedia
-            style={{height: '250px'}}
-            component='img'
-            src={cardImage}
-            title={movie.Title}
-            className={styles['MuiCardMedia-img']}
-        />
-        <CardContent>
-            <Typography gutterBottom variant="h5" component="h5">
-                {title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+    return (
+    <div className={styles.Movie}>
+        <div className={styles.Image} style={{ backgroundImage: `url(${cardImage})`}}>
+        </div>
+        <div className={styles.Info}>
+            <div className={styles.Title}>
+                <h2>{title}</h2>
+            </div>
+            <div className={styles.Year}>
                 {movie.Year}
-            </Typography>
-        </CardContent>
-        <CardActions>
-            <Button disabled={isNominated} size="small" color="primary" onClick={() => nominate(movie)}>
-                Nominate
-            </Button>
-        </CardActions>
-    </Card>);
+            </div>
+            <div>
+                <Button disabled={isNominated} size="small" color="primary" onClick={() => nominate(movie)}>
+                    Nominate
+                </Button>
+            </div>
+        </div>
+    </div>);
 }
 
 export default Movie;

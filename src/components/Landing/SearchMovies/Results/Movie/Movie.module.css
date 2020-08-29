@@ -1,14 +1,42 @@
 .Movie {
     width: 300px;
     height: 400px;
-    margin-top: 50px;
+    /* border: 1px solid coral; */
+
+    border-radius: 20px;
+    background-color: #1C1C1C;
+
+    -webkit-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
+}
+
+.Movie > div {
+    margin-bottom: 10px;
+}
+
+.Image {
+    height: 70%;
+    background-repeat: no-repeat;
+    background-clip: padding-box;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.Year {
+    color: #474747;
+    font-weight: bold;
 }
 
 .Disabled {
     box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.3);
 }
 
-.MuiCardMedia-img {
-    height: 100%;
-    width: 100%;
+.Info {
+    padding: 5px 15px;
+}
+
+.Info > div {
+    margin-bottom: 4px;
 }
