@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 
 // Styles
 import styles from './Movie.module.css';
-import { Button } from '@material-ui/core';
 
 // Model
 import MovieModel from "../../../../../models/Movie";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
 // UI
-import defaultImage from '../../../../../assets/images/blank_image.png';
+import placeholderImage from '../../../../../assets/images/placeholder.svg';
 
 
 function truncateMovieTitle(title: string) {
@@ -32,14 +31,34 @@ function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] 
     return [isNominated, nominate];
 }
 
+function Button({children, disabled = false, onClick}: React.PropsWithChildren<{disabled?: boolean, onClick?: () => void}>) {
+    const handleClick = () => {
+        if (disabled) return;
+
+        onClick?.();
+    };
+
+    const disabledStyle = disabled ? styles.Disabled : styles.Enabled;
+
+    return ( 
+        <div onClick={handleClick} className={`${styles.Button} ${disabledStyle}`}>
+            {children}
+        </div>
+    );
+}
+
 const Movie = ({movie}: {movie: MovieModel}) => {
-    const [isNominated, nominate] = useNominated(movie.imdbID);
-    const cardImage = (movie.Poster === 'N/A') ? defaultImage : movie.Poster;
+    const [isNominated, nominate] = useNominated(movie.imdbID)
+    const onClick = () => nominate(movie);
+
+    const cardImage = (movie.Poster === 'N/A') ? placeholderImage : movie.Poster;
     const title = truncateMovieTitle(movie.Title);
+
+    const placeholder = (movie.Poster === 'N/A') ? styles.PlaceholderImage : undefined;
 
     return (
     <div className={styles.Movie}>
-        <div className={styles.Image} style={{ backgroundImage: `url(${cardImage})`}}>
+        <div className={`${styles.Image} ${placeholder}`} style={{ backgroundImage: `url(${cardImage})`}}>
         </div>
         <div className={styles.Info}>
             <div className={styles.Title}>
@@ -49,7 +68,7 @@ const Movie = ({movie}: {movie: MovieModel}) => {
                 {movie.Year}
             </div>
             <div>
-                <Button disabled={isNominated} size="small" color="primary" onClick={() => nominate(movie)}>
+                <Button disabled={isNominated} onClick={onClick}>
                     Nominate
                 </Button>
             </div>

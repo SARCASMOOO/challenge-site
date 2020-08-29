@@ -3,7 +3,8 @@ import React, { useContext } from 'react';
 // UI
 import {Button, Card, CardActions, CardContent, CardMedia, Typography} from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
-import defaultImage from '../../../../assets/images/blank_image.png';
+import defaultImage from '../../../../assets/images/placeholder.svg';
+
 
 // State/Models
 import MovieModel from "../../../../models/Movie";
