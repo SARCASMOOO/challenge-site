@@ -13,7 +13,7 @@ function truncateMovieTitle(title: string) {
     return (title.length > truncateSize) ? title.substring(0, truncateSize) + "..." : title;
 }
 
-function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] {
+function useNominateMovie(movie_id: string): [boolean, (movie: MovieModel) => void] {
     const [nominatedMovies, setNominatedMovie] = useContext(NominatedContext);
 
     const movieFromNomination = nominatedMovies.findIndex(nomMovie => nomMovie.imdbID === movie_id);
@@ -30,7 +30,7 @@ function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] 
 
 
 function SearchMovieCard({movie}: {movie: MovieModel}) {
-    const [isNominated, nominate] = useNominated(movie.imdbID)
+    const [isNominated, nominate] = useNominateMovie(movie.imdbID)
     const onClick = () => nominate(movie);
 
     const cardImage = (movie.Poster === 'N/A') ? undefined : movie.Poster;
