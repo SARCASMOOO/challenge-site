@@ -23,7 +23,7 @@ const SearchMovies = (_: {}) => {
                 Shopify Award Show
             </Typography>
             <SearchBar onChange={onSearchChange}/>
-            <Results movies={movies} />
+            {error ? <div style={{color: "white"}}>{error}</div> : <Results movies={movies} />}
         </Container>
     );
 }

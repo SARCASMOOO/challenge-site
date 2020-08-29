@@ -15,8 +15,8 @@ import { NominatedContext } from '../../../global_state/nominatedMoviesGlobal';
 const SidePanel = (_: {}) => {
     const [nominatedMovies, setNominatedMovies] = useContext(NominatedContext);
 
-    const [value, setValue] = useState(2);
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    const [value, setValue] = useState('nominations');
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
         setValue(newValue);
     };
 
@@ -30,8 +30,8 @@ const SidePanel = (_: {}) => {
                 onChange={handleChange}
                 aria-label="disabled tabs example"
             >
-                <Tab label={`Nominations (${nominatedMovies.length})`} />
-                <Tab label="Favourites" />
+                <Tab label={`Nominations (${nominatedMovies.length})`} value='nominations'/>
+                <Tab label="Favourites" value='favourites'/>
             </Tabs>
             <SidePanelItems/>
         </Paper>

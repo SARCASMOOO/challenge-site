@@ -9,15 +9,18 @@ function useMovies(): [MovieModel[], string | undefined, (search: string) => voi
     const [error, setError] = useState<string | undefined>(undefined);
 
     const searchMovie = (search: string) => {
-        const movie = new Movies();
-        movie.getMoviesBySearch(search, 1).then((response) => {
-            if(response && response.data && response.data.Search) {
-                const newMovies: MovieModel[] = response.data.Search;
-                setMovies(newMovies);
-            }
+        if (search.length === 0 || search === "") {
+            setMovies([]);
+        }
+
+        const networkLayer = new Movies();
+        networkLayer.getMoviesBySearch(search, 1)
+        .then(movies => {
+            setMovies(movies);
+            setError(undefined);
         }).catch(error => {
-            console.log(`${error}`);
-            setError('Unable to grab movies.');
+            setError(error);
+            setMovies([]);
         });
     }
 

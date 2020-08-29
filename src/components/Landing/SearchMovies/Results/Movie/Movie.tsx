@@ -8,6 +8,8 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, 
 import MovieModel from "../../../../../models/Movie";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
+// UI
+import defaultImage from '../../../../../assets/images/blank_image.png';
 function truncateMovieTitle(title: string) {
     return (title.length > 18) ? title.substring(0, 20) + "..." : title;
 }
@@ -29,15 +31,16 @@ function useNominated(movie_id: string): [boolean, (movie: MovieModel) => void] 
 
 const Movie = ({movie}: {movie: MovieModel}) => {
     const [isNominated, nominate] = useNominated(movie.imdbID);
-
+    const cardImage = (movie.Poster === 'N/A') ? defaultImage : movie.Poster;
     const title = truncateMovieTitle(movie.Title);
 
     return (<Card className={styles.Movie}>
         <CardMedia
             style={{height: '250px'}}
             component='img'
-            src={movie.Poster}
+            src={cardImage}
             title={movie.Title}
+            className={styles['MuiCardMedia-img']}
         />
         <CardContent>
             <Typography gutterBottom variant="h5" component="h5">
