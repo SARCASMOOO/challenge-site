@@ -14,7 +14,7 @@ const Landing = (props: {}) => {
     return (
         <div className={styles.Container}>
             <div className={styles.Left}><SearchMovies /></div>
-            <div className={styles.Right}></div>
+            <div className={styles.Right}><SidePanel /></div>
         </div>
     )
 }
