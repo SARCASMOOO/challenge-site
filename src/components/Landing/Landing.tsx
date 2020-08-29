@@ -12,10 +12,10 @@ import { NominatedProvider } from "../../global_state/nominatedMoviesGlobal";
 
 const Landing = (props: {}) => {
     return (
-        <main className={styles.Main}>
-            <SearchMovies />
-            <SidePanel />
-        </main>
+        <div className={styles.Container}>
+            <div className={styles.Left}><SearchMovies /></div>
+            <div className={styles.Right}></div>
+        </div>
     )
 }
 

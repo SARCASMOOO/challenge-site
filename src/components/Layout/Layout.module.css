@@ -1,8 +1,12 @@
 .Layout {
     background-color: var(--landing-bg-color);
-    display: grid;
-    height: 100vh;
-    min-width: 400px;
-    grid-template-rows: 50px auto 50px;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+
+.Layout > div {
+    flex: auto;
+}
