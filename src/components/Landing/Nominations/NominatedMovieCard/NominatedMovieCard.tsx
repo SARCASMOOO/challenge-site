@@ -9,6 +9,7 @@ import MovieCard from '../../MovieCard/MovieCard';
 
 
 function useRemoveNomination() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, setNominatedMovies] = useContext(NominatedContext);
     
     const removeNomination = (movie_id: string) => {
