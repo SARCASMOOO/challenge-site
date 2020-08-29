@@ -4,7 +4,7 @@ import React, {useState, useContext} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import styles from './SidePanel.module.css';
+import styles from './Nominations.module.css';
 
 // Components
 import SidePanelItems from './SidePaneltems/SidePanelItems';
@@ -12,7 +12,7 @@ import SidePanelItems from './SidePaneltems/SidePanelItems';
 // Model/State
 import { NominatedContext } from '../../../global_state/nominatedMoviesGlobal';
 
-const SidePanel = (props: {}) => {
+const Nominations = (props: {}) => {
     const [nominatedMovies] = useContext(NominatedContext);
 
     const [value, setValue] = useState('nominations');
@@ -21,7 +21,7 @@ const SidePanel = (props: {}) => {
     };
 
     return (
-        <Paper square className={styles.SidePanel}>
+        <Paper square className={styles.Nominations}>
             <Tabs
                 value={value}
                 variant='fullWidth'
@@ -38,4 +38,4 @@ const SidePanel = (props: {}) => {
     );
 }
 
-export default SidePanel;
+export default Nominations;
