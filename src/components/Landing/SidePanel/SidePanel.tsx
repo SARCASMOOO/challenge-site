@@ -12,8 +12,8 @@ import SidePanelItems from './SidePaneltems/SidePanelItems';
 // Model/State
 import { NominatedContext } from '../../../global_state/nominatedMoviesGlobal';
 
-const SidePanel = (_: {}) => {
-    const [nominatedMovies, setNominatedMovies] = useContext(NominatedContext);
+const SidePanel = (props: {}) => {
+    const [nominatedMovies] = useContext(NominatedContext);
 
     const [value, setValue] = useState('nominations');
     const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {

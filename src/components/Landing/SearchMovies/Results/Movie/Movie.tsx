@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 // Styles
 import styles from './Movie.module.css';
-import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
 
 // Model
 import MovieModel from "../../../../../models/Movie";
