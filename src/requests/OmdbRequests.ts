@@ -6,6 +6,10 @@ require('dotenv').config();
 class OmdbRequests {
     private imdbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + process.env['REACT_APP_OM_DB_API_KEY'];
 
+    constructor() {
+        console.log("CREATED!");
+    }
+
     async getMoviesBySearch(search: String, page: number) {
         const queryString = `&type=movie&page=${page}&s=${search}`;
         

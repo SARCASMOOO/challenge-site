@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 // Styles
 import styles from './SearchMovies.module.css';
@@ -15,14 +15,14 @@ import OmdbRequests from "../../../requests/OmdbRequests";
 function useSearchMovies(): [MovieModel[], string | undefined, (search: string) => void] {
     const [movies, setMovies] = useState<MovieModel[]>([]);
     const [error, setError] = useState<string | undefined>(undefined);
-    const networkLayer = new OmdbRequests();
+    const omdb = useMemo(() => new OmdbRequests(), []);
 
     const searchMovie = (search: string) => {
         if (search.length === 0 || search === "") {
             setMovies([]);
         }
 
-        networkLayer.getMoviesBySearch(search, 1)
+        omdb.getMoviesBySearch(search, 1)
         .then(movies => {
             setMovies(movies);
             setError(undefined);
