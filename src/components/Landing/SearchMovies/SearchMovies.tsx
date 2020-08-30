@@ -9,13 +9,13 @@ import TextField from "./TextField/TextField";
 
 // Model/Network
 import MovieModel from "../../../models/Movie";
-import Movies from "../../../axios/movies";
+import OmdbRequests from "../../../requests/OmdbRequests";
 
 
 function useSearchMovies(): [MovieModel[], string | undefined, (search: string) => void] {
     const [movies, setMovies] = useState<MovieModel[]>([]);
     const [error, setError] = useState<string | undefined>(undefined);
-    const networkLayer = new Movies();
+    const networkLayer = new OmdbRequests();
 
     const searchMovie = (search: string) => {
         if (search.length === 0 || search === "") {

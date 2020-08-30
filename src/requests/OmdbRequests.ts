@@ -1,16 +1,9 @@
-import axios from './axios-movies';
+import axios from 'axios';
 import MovieModel from '../models/Movie';
 
 require('dotenv').config();
 
-interface MovieQuery {
-    s: string;
-    type: string;
-    y: string;
-    page: string;
-}
-
-class Movies {
+class OmdbRequests {
     private imdbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + process.env['REACT_APP_OM_DB_API_KEY'];
 
     async getMoviesBySearch(search: String, page: number) {
@@ -30,4 +23,4 @@ class Movies {
     }
 }
 
-export default Movies;
+export default OmdbRequests;
