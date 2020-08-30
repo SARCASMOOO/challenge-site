@@ -11,7 +11,9 @@ function Results({movies}: {movies: MovieModel[]}) {
 
     return (
         <div className={styles.Results}>
-            {movieList}
+            <div className={styles.GridRow}>
+                {movieList}
+            </div>
         </div>
     );
 }

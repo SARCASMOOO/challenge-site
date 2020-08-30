@@ -1,11 +1,16 @@
 .Results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    max-width: 1335px;
+    margin: 50px auto;
     height: 100%;
-    margin-top: 50px;
 }
+
+.GridRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 
 .Results > div {
     margin-bottom: 30px;
-}
+ }
