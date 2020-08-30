@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 // State/Models
-import MovieModel from "../../../../models/MovieModel";
+import MovieModel, { truncateMovieTitle } from "../../../../models/MovieModel";
 import { NominatedContext } from '../../../../global_state/nominatedMoviesGlobal';
 
 // Styles
@@ -13,17 +13,10 @@ function useRemoveNomination() {
     const [_, setNominatedMovies] = useContext(NominatedContext);
     
     const removeNomination = (movie_id: string) => {
-        setNominatedMovies(nominatedMov => {
-            return [...nominatedMov].filter(movie => movie.imdbID !== movie_id);
-        });
+        setNominatedMovies(nominated => [...nominated].filter(movie => movie.imdbID !== movie_id));
     };
 
     return removeNomination;
-}
-
-function truncateMovieTitle(title: string) {
-    const truncateSize = 22;
-    return (title.length > truncateSize) ? title.substring(0, truncateSize - 3) + "..." : title;
 }
 
 function NominatedMovieCard({movie}: {movie: MovieModel}) {

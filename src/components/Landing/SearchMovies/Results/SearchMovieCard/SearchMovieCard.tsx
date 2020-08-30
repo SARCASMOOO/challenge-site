@@ -1,17 +1,11 @@
 import React, { useContext } from "react";
 
 // Model
-import MovieModel from "../../../../../models/MovieModel";
+import MovieModel, { truncateMovieTitle } from "../../../../../models/MovieModel";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
 // Common component
 import MovieCard from "../../../MovieCard/MovieCard";
-
-
-function truncateMovieTitle(title: string) {
-    const truncateSize = 22;
-    return (title.length > truncateSize) ? title.substring(0, truncateSize - 3) + "..." : title;
-}
 
 function useNominateMovie(movie_id: string): [boolean, (movie: MovieModel) => void] {
     const [nominatedMovies, setNominatedMovie] = useContext(NominatedContext);
