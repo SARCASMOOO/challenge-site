@@ -3,6 +3,9 @@ import React, { useState, useMemo, useEffect } from "react";
 // Styles
 import styles from './SearchMovies.module.css';
 
+// SVGs
+import clear from '../../../assets/images/clear.svg';
+
 // Components
 import Results from "./Results/Results";
 import TextField from "./TextField/TextField";
@@ -76,6 +79,7 @@ function SearchMovies() {
             <div><h1>Shopify Award Show</h1></div>
             <div className={styles.SearchBar}>
                 <TextField placeholder='Search' value={searchTerm} onChange={onSearchChange}/>
+                <img className={styles.Clear} src={clear} alt='Clear text'/>
             </div>
             <div>
                 {card}
