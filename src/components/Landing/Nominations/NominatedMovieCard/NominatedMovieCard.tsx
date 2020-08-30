@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 // State/Models
-import MovieModel from "../../../../models/Movie";
+import MovieModel from "../../../../models/MovieModel";
 import { NominatedContext } from '../../../../global_state/nominatedMoviesGlobal';
 
 // Styles

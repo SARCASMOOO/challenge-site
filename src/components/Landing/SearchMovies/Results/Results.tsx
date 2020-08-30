@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from './Results.module.css';
 
-import MovieModel from "../../../../models/Movie";
+import MovieModel from "../../../../models/MovieModel";
 import SearchMovieCard from "./SearchMovieCard/SearchMovieCard";
 
 

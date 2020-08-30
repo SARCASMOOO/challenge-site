@@ -1,5 +1,5 @@
 import axios from 'axios';
-import MovieModel from '../models/Movie';
+import MovieModel from '../models/MovieModel';
 
 require('dotenv').config();
 

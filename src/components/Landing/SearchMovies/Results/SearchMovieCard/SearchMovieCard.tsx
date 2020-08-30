@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 // Model
-import MovieModel from "../../../../../models/Movie";
+import MovieModel from "../../../../../models/MovieModel";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
 
 // Common component

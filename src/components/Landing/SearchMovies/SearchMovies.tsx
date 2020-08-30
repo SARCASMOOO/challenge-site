@@ -8,7 +8,7 @@ import Results from "./Results/Results";
 import TextField from "./TextField/TextField";
 
 // Model/Network
-import MovieModel from "../../../models/Movie";
+import MovieModel from "../../../models/MovieModel";
 import OmdbRequests from "../../../requests/OmdbRequests";
 
 
