@@ -25,8 +25,8 @@ function MovieCard({ movie, actionName, isNominated = false, className, onClick 
     const imageStyle = movie.imageSrc ? undefined : styles.PlaceholderImage;
 
     return (
-        <div className={styles.GridItem}>
-            <div className={`${styles.Movie} ${className}`}>
+        <div className={className}>
+            <div className={styles.Movie}>
                 <div className={`${styles.Image} ${imageStyle}`}
                     style={{ backgroundImage: `url(${cardImage})` }}>
                 </div>

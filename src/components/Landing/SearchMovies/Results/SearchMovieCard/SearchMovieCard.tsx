@@ -1,5 +1,8 @@
 import React, { useContext, useMemo } from "react";
 
+// Style
+import styles from './SearchMovieCard.module.css';
+
 // Model
 import MovieModel, { truncateMovieTitle } from "../../../../../models/MovieModel";
 import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlobal";
@@ -35,6 +38,7 @@ function SearchMovieCard({movie}: {movie: MovieModel}) {
 
     return (
         <MovieCard movie={{title: title, imageSrc: cardImage, year: movie.Year}} 
+            className={styles.GridItem}
             actionName='Nominate' 
             onClick={onClick} 
             isNominated={isNominated} />
