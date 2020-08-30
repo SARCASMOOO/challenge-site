@@ -46,7 +46,6 @@ function useSearchMovies(): [MovieModel[], boolean, string | undefined, (search:
     return [movies, loading, error, searchMovie];
 }
 
-
 function SearchMovies() {
     const [movies, loading, error, searchMovie] = useSearchMovies();
     const [searchTerm, setSearchTerm] = useState('');
@@ -63,7 +62,8 @@ function SearchMovies() {
         return () => clearTimeout(timer);
         // eslint-disable-next-line react-hooks/exhaustive-deps    
     }, [searchTerm]);
-  
+
+    const clearSearch = () => setSearchTerm('');
 
     let card: JSX.Element;
     if (error) {
@@ -79,7 +79,7 @@ function SearchMovies() {
             <div><h1>Shopify Award Show</h1></div>
             <div className={styles.SearchBar}>
                 <TextField placeholder='Search' value={searchTerm} onChange={onSearchChange}/>
-                <img className={styles.Clear} src={clear} alt='Clear text'/>
+                <img className={styles.Clear} src={clear} alt='Clear text' onClick={clearSearch}/>
             </div>
             <div>
                 {card}
