@@ -43,6 +43,17 @@
   cursor: pointer;
 }
 
+.Absolute {
+  right: 0px;
+  display: none;
+  position: absolute;
+  background-color: #1d1c1c;
+
+  -webkit-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+}
+
 /* Nominations panel */
 @media (max-width: 1110px) {
   .SideDrawerOpen {
@@ -50,27 +61,37 @@
   }
 }
 @media (max-width: 830px) {
-  .Left {
-    flex-grow: 4;
-    width: 100%;
+  .Right {
+    display: none;
+  }
+
+  .Absolute {
+    display: block;
+    z-index: 10;
   }
 
   .SideDrawerOpen {
-    z-index: 10;
-    position: absolute;
-    display: outside;
-    right: 0px;
     width: 50%;
-    transform: translateX(0%);
-
-    -webkit-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+    animation: open 1s forwards;
   }
 
   .SideDrawerClosed {
-    width: 0%;
-    transform: translateX(100%);
+    width: 50%;
+    animation: close 1s forwards;
+  }
+
+  @keyframes open {
+    
+    100% {
+      right: translateX(-100%);
+    }
+  }
+
+  @keyframes close {
+   
+    100% {
+        transform: translateX(100%);
+    }
   }
 }
 

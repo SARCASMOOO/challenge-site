@@ -21,6 +21,7 @@ function Landing() {
     const isOpenClass = isOpen ? styles.SideDrawerOpen : styles.SideDrawerClosed;
 
     return (
+        <>
         <div className={styles.Container}>
             <div className={styles.Left}>
                 <SearchMovies />
@@ -30,6 +31,8 @@ function Landing() {
             </div>
             <div className={`${styles.Right} ${isOpenClass}`}><Nominations /></div>
         </div>
+        <div className={`${styles.Absolute} ${isOpenClass}`}><Nominations /></div>
+        </>
     );
 }
 
