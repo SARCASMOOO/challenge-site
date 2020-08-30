@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 // Styles
 import styles from './SearchMovies.module.css';
@@ -40,18 +40,29 @@ function useSearchMovies(): [MovieModel[], string | undefined, (search: string) 
 
 function SearchMovies() {
     const [movies, error, searchMovie] = useSearchMovies();
+    const [searchTerm, setSearchTerm] = useState('');
+    const onSearchChange = (value: string) => setSearchTerm(value);
 
-    const onSearchChange = (searchString: string) => searchMovie(searchString);
+    useEffect(() => {
+        if (searchTerm.length === 0) return;
+
+        const timer = setTimeout(() => {
+          searchMovie(searchTerm);
+        }, 300);
+    
+        return () => clearTimeout(timer);
+    }, [searchTerm]);
+  
 
     return (
         <div className={styles.Container}>
             <div><h1>Shopify Award Show</h1></div>
             <div className={styles.SearchBar}>
-                <TextField placeholder='Search' onChange={onSearchChange}/>
+                <TextField placeholder='Search' value={searchTerm} onChange={onSearchChange}/>
             </div>
             <div>
                 {error ? 
-                <div className={styles.Error}style={{color: "white"}}>{error}</div> 
+                <div className={styles.Error} style={{color: "white"}}>{error}</div> 
                 : <Results movies={movies} />}
             </div>
         </div>

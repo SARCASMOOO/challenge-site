@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from './TextField.module.css';
 
 
-const TextField = ({placeholder, onChange}: {placeholder?: string, onChange?: (searchString: string) => void}) => {
-    const [value, setValue] = useState('');
-
+const TextField = ({placeholder, value, onChange}: {placeholder?: string, value?: string, onChange?: (value: string) => void}) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = event.target.value;
-        setValue(newValue);
         onChange?.(newValue);
     };
 
