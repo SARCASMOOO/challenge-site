@@ -54,3 +54,8 @@
 .Trophy > img {
     display: block;
 }
+
+.Title, .Year {
+    width: 100%;
+    overflow-wrap: break-word;
+}

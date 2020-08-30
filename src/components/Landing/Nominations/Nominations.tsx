@@ -13,7 +13,7 @@ function Nominations() {
 
     return (
         <div className={styles.Nominations}>
-            <div><h2>Nominations</h2></div>
+            <div className={styles.Header}><h2>Nominations</h2></div>
             {nominatedMovies.map(movie => <NominatedMovieCard key={movie.imdbID} movie={movie}/>)}
         </div>
     );

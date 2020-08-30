@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     display: flex;
+    position: relative;
 }
 
 /* Shadow */
@@ -16,6 +17,7 @@
     z-index: 5;
     position: relative;
     background-color: var(--landing-bg-color);
+    height: 100%;
 }
 
 .Right {
@@ -39,3 +41,24 @@
     width: 35px;
     cursor: pointer;
 }
+
+/* Nominations panel */
+@media(max-width: 1110px) {
+    .Right {
+        width: 30%;
+    }
+  }
+@media(max-width: 830px) {
+    .Right {
+      z-index: 10;
+      position: absolute;
+      right: 0px;
+    width: 50%;
+    }
+  }
+  @media(max-width: 570px) {
+    .Right {
+      width: 75%;
+      }
+  }
+ 

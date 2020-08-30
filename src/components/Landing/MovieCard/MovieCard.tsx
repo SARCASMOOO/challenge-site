@@ -37,7 +37,7 @@ function MovieCard({ movie, actionName, isNominated = false, className, onClick 
                     <div className={styles.Year}>
                         {movie.year}
                     </div>
-                    <div>
+                    <div className={styles.Button}>
                         <Button disabled={isNominated} onClick={onClick}>
                             {actionName}
                         </Button>

@@ -2,7 +2,8 @@
     padding: 10px 0px;
     cursor: pointer;
     font-weight: bold;
-    width: 95px;
+    width: 100%;
+    overflow-wrap: break-word;
 }
 
 .Enabled:hover {
