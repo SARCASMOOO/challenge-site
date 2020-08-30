@@ -44,13 +44,14 @@ function SearchMovies() {
     const onSearchChange = (value: string) => setSearchTerm(value);
 
     useEffect(() => {
-        if (searchTerm.length === 0) return;
-
+        const typingDelay = 300;
+        
         const timer = setTimeout(() => {
           searchMovie(searchTerm);
-        }, 300);
+        }, typingDelay);
     
         return () => clearTimeout(timer);
+        // eslint-disable-next-line react-hooks/exhaustive-deps    
     }, [searchTerm]);
   
 
