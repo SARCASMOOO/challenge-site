@@ -24,6 +24,7 @@
     background-color: #1d1c1c;
     transition: width 1s;
     z-index: 0;
+    flex-shrink: 0;
 }
 
 .SideDrawerOpen {
@@ -44,20 +45,24 @@
 
 /* Nominations panel */
 @media(max-width: 1110px) {
-    .Right {
+    .SideDrawerOpen {
         width: 30%;
     }
   }
 @media(max-width: 830px) {
-    .Right {
+    .SideDrawerOpen {
       z-index: 10;
       position: absolute;
       right: 0px;
     width: 50%;
+
+    -webkit-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
     }
   }
   @media(max-width: 570px) {
-    .Right {
+    .SideDrawerOpen {
       width: 75%;
       }
   }
