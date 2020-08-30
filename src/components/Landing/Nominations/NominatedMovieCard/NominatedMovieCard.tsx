@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 // Style
 import styles from './NominatedMovieCard.module.css';
@@ -9,14 +9,17 @@ import { NominatedContext } from '../../../../global_state/nominatedMoviesGlobal
 
 // Common
 import MovieCard from '../../MovieCard/MovieCard';
+import CacheManager from '../../../../global_state/cacheManager';
 
 
 function useRemoveNomination() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, setNominatedMovies] = useContext(NominatedContext);
+    const cache = useMemo(() => new CacheManager(), []);
     
     const removeNomination = (movie_id: string) => {
         setNominatedMovies(nominated => [...nominated].filter(movie => movie.imdbID !== movie_id));
+        cache.removeNominatedMovie(movie_id);
     };
 
     return removeNomination;

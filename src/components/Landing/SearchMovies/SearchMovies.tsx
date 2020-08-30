@@ -47,7 +47,8 @@ function SearchMovies() {
         const typingDelay = 300;
         
         const timer = setTimeout(() => {
-          searchMovie(searchTerm);
+            console.log(searchTerm);
+            searchMovie(searchTerm);
         }, typingDelay);
     
         return () => clearTimeout(timer);

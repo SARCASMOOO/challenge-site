@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 
 // Model
 import MovieModel, { truncateMovieTitle } from "../../../../../models/MovieModel";
@@ -6,9 +6,11 @@ import { NominatedContext } from "../../../../../global_state/nominatedMoviesGlo
 
 // Common component
 import MovieCard from "../../../MovieCard/MovieCard";
+import CacheManager from "../../../../../global_state/cacheManager";
 
 function useNominateMovie(movie_id: string): [boolean, (movie: MovieModel) => void] {
     const [nominatedMovies, setNominatedMovie] = useContext(NominatedContext);
+    const cache = useMemo(() => new CacheManager(), []);
 
     const movieFromNomination = nominatedMovies.findIndex(nomMovie => nomMovie.imdbID === movie_id);
     const isNominated = movieFromNomination !== -1;
@@ -17,6 +19,7 @@ function useNominateMovie(movie_id: string): [boolean, (movie: MovieModel) => vo
         if (isNominated) return; // already nominated
 
         setNominatedMovie(nominatedMovies => [...nominatedMovies, movie]);
+        cache.saveNominatedMovie(movie);
     }
 
     return [isNominated, nominate];
