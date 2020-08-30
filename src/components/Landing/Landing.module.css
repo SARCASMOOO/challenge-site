@@ -1,69 +1,81 @@
 .Container {
-    width: 100%;
-    display: flex;
-    position: relative;
-    align-items: stretch;
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: stretch;
 }
 
 /* Shadow */
 .Left {
-    -webkit-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
 }
 
 .Left {
-    flex: auto;
-    z-index: 5;
-    position: relative;
-    background-color: var(--landing-bg-color);
-    height: 100%;
+  flex: auto;
+  z-index: 5;
+  position: relative;
+  background-color: var(--landing-bg-color);
+  height: 100%;
 }
 
 .Right {
-    background-color: #1d1c1c;
-    transition: width 1s;
-    z-index: 0;
-    flex-shrink: 0;
+  background-color: #1d1c1c;
+  transition: all 1s;
+  z-index: 0;
+  flex-shrink: 0;
 }
 
 .SideDrawerOpen {
-    width: 25%;
+  width: 25%;
 }
 
 .SideDrawerClosed {
-    width: 0px;
+  width: 0px;
 }
 
 .Hamburger {
-    position: absolute;
-    right: 20px;
-    top: 30px;
-    width: 35px;
-    cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  width: 35px;
+  cursor: pointer;
 }
 
 /* Nominations panel */
-@media(max-width: 1110px) {
-    .SideDrawerOpen {
-        width: 30%;
-    }
+@media (max-width: 1110px) {
+  .SideDrawerOpen {
+    width: 30%;
   }
-@media(max-width: 830px) {
-    .SideDrawerOpen {
-      z-index: 10;
-      position: absolute;
-      right: 0px;
-    width: 50%;
+}
+@media (max-width: 830px) {
+  .Left {
+    flex-grow: 4;
+    width: 100%;
+  }
 
-    -webkit-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.75);
-    }
+  .SideDrawerOpen {
+    z-index: 10;
+    position: absolute;
+    display: outside;
+    right: 0px;
+    width: 50%;
+    transform: translateX(0%);
+
+    -webkit-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.75);
   }
-  @media(max-width: 570px) {
-    .SideDrawerOpen {
-      width: 75%;
-      }
+
+  .SideDrawerClosed {
+    width: 0%;
+    transform: translateX(100%);
   }
- 
+}
+
+@media (max-width: 570px) {
+  .SideDrawerOpen {
+    width: 75%;
+  }
+}
