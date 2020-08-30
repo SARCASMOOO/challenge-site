@@ -1,4 +1,11 @@
 .Nominations {
-    height: 100%;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: 20px;
+}
+
+.Nominations > div {
+    margin-bottom: 30px;
 }

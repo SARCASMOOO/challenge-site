@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 
+// Style
+import styles from './NominatedMovieCard.module.css';
+
 // State/Models
 import MovieModel, { truncateMovieTitle } from "../../../../models/MovieModel";
 import { NominatedContext } from '../../../../global_state/nominatedMoviesGlobal';
 
-// Styles
+// Common
 import MovieCard from '../../MovieCard/MovieCard';
 
 
@@ -29,6 +32,7 @@ function NominatedMovieCard({movie}: {movie: MovieModel}) {
     return (
         <MovieCard movie={{title: title, imageSrc: cardImage, year: movie.Year}} 
             actionName='Remove' 
+            className={styles.MovieCard}
             onClick={onClick} />
     );
 }

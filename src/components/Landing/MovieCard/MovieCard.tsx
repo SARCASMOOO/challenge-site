@@ -16,15 +16,16 @@ interface Props {
     movie: Movie;
     actionName: 'Nominate' | 'Remove';
     isNominated?: boolean;
+    className?: string;
     onClick?: () => void;
 }
 
-function MovieCard({movie, actionName, isNominated=false, onClick}: Props) {
+function MovieCard({movie, actionName, isNominated=false, className, onClick}: Props) {
     const cardImage = movie.imageSrc ?? placeholderImage;
     const imageStyle = movie.imageSrc ? undefined : styles.PlaceholderImage;
 
     return (
-        <div className={styles.Movie}>
+        <div className={`${styles.Movie} ${className}`}>
         <div className={`${styles.Image} ${imageStyle}`} 
         style={{ backgroundImage: `url(${cardImage})`}}>
         </div>
