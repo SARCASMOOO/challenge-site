@@ -4,16 +4,15 @@ import MovieModel from '../models/Movie';
 require('dotenv').config();
 
 class OmdbRequests {
-    private imdbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + process.env['REACT_APP_OM_DB_API_KEY'];
+    private imdbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=';
+    private API_KEY = process.env['REACT_APP_OM_DB_API_KEY'];
 
-    constructor() {
-        console.log("CREATED!");
-    }
+    private url = (query: string) => `${this.imdbURL}${this.API_KEY}${query}`;
 
-    async getMoviesBySearch(search: String, page: number) {
+    public async getMoviesBySearch(search: String, page: number) {
         const queryString = `&type=movie&page=${page}&s=${search}`;
         
-        const response = await axios.get(this.imdbURL + queryString);
+        const response = await axios.get(this.url(queryString));
 
         if(response && response.data) {
             if (response.data.Search) return response.data.Search as MovieModel[];

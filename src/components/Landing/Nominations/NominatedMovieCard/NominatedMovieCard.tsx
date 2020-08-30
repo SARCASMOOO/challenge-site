@@ -14,12 +14,7 @@ function useRemoveNomination() {
     
     const removeNomination = (movie_id: string) => {
         setNominatedMovies(nominatedMov => {
-            const nomMovieCopy = [...nominatedMov];
-            const movieToRemove = nomMovieCopy.findIndex(mov => mov.imdbID === movie_id);
-            
-            if (movieToRemove !== -1) nomMovieCopy.splice(movieToRemove, 1);
-
-            return nomMovieCopy;
+            return [...nominatedMov].filter(movie => movie.imdbID !== movie_id);
         });
     };
 

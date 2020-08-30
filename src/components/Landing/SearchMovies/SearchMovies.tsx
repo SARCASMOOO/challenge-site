@@ -18,8 +18,10 @@ function useSearchMovies(): [MovieModel[], string | undefined, (search: string) 
     const omdb = useMemo(() => new OmdbRequests(), []);
 
     const searchMovie = (search: string) => {
-        if (search.length === 0 || search === "") {
+        if (search.length === 0 || search === '') {
             setMovies([]);
+            setError(undefined);
+            return;
         }
 
         omdb.getMoviesBySearch(search, 1)
