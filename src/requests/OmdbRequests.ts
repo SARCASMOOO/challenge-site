@@ -1,13 +1,20 @@
 import axios from 'axios';
 import MovieModel from '../models/MovieModel';
 
-require('dotenv').config();
+const functions = require('firebase-functions');
+let config = require('../env.json');
 
 class OmdbRequests {
-    private imdbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=';
-    private API_KEY = process.env['REACT_APP_OM_DB_API_KEY'];
+    private imdbURL = 'https://www.omdbapi.com/?i=tt3896198&apikey=';
 
-    private url = (query: string) => `${this.imdbURL}${this.API_KEY}${query}`;
+    private url = (query: string) => `${this.imdbURL}${this.API_KEY()}${query}`;
+
+    private API_KEY() {
+        if(Object.keys(functions.config()).length) {
+            config = functions.config();
+        }
+        return config.service.react_app_om_db_api_key;
+    }
 
     public async getMoviesBySearch(search: String, page: number) {
         const queryString = `&type=movie&page=${page}&s=${search}`;
