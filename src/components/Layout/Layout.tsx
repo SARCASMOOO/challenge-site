@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React from "react";
 import styles from './Layout.module.css';
 
 function Layout({children}: React.PropsWithChildren<{}>) {   
