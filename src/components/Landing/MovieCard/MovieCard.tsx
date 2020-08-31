@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import styles from './MovieCard.module.css';
 import trophy from '../../../assets/images/trophy.svg';
 import placeholderImage from '../../../assets/images/placeholder.svg';
-
+import { NominatedContext } from '../../../global_state/nominatedMoviesGlobal';
 import Button from "../Button/Button";
 
 type Movie = {
@@ -21,10 +21,13 @@ interface Props {
 }
 
 function MovieCard({ movie, actionName, isNominated = false, className, onClick }: Props) {
+
+    const [nominatedMovies, _] = useContext(NominatedContext);
     const cardImage = movie.imageSrc ?? placeholderImage;
     const imageStyle = movie.imageSrc ? undefined : styles.PlaceholderImage;
     const isNominatedStyle = isNominated ? styles.Nominated : undefined;
-
+    const isNominationFull = nominatedMovies.length > 4 && actionName !== 'Remove';
+    
     return (
         <div className={className}>
             <div className={styles.Movie}>
@@ -39,7 +42,7 @@ function MovieCard({ movie, actionName, isNominated = false, className, onClick 
                         {movie.year}
                     </div>
                     <div className={styles.Button}>
-                        <Button disabled={isNominated} onClick={onClick}>
+                        <Button disabled={isNominated || isNominationFull} onClick={onClick}>
                             {actionName}
                         </Button>
                     </div>
