@@ -62,13 +62,12 @@ function SearchMovies() {
     const [movies, loading, error, searchMovie] = useSearchMovies();
     const [searchTerm, setSearchTerm] = useState('');
     const onSearchChange = (value: string) => setSearchTerm(value);
-    const [nominatedMovies, _] = useContext(NominatedContext);
+    const [nominatedMovies, ] = useContext(NominatedContext);
 
     useEffect(() => {
         const typingDelay = 300;
         
         const timer = setTimeout(() => {
-            console.log(searchTerm);
             searchMovie(searchTerm);
         }, typingDelay);
     
