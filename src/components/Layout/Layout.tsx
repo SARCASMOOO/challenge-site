@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import styles from './Layout.module.css';
 
-function Layout({children}: React.PropsWithChildren<{}>) {
-    return (
+function Layout({children}: React.PropsWithChildren<{}>) {   
+    return (        
         <div className={styles.Layout}>
             {children}
         </div>

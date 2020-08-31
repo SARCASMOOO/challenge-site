@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useContext } from "react";
 
 // Styles
 import styles from './SearchMovies.module.css';
@@ -13,6 +13,18 @@ import TextField from "./TextField/TextField";
 // Model/Network
 import MovieModel from "../../../models/MovieModel";
 import OmdbRequests from "../../../requests/OmdbRequests";
+
+// Context
+import { NominatedContext } from '../../../global_state/nominatedMoviesGlobal';
+
+const Msg = () => (<h3 style={{
+    position: 'fixed',
+    border: '1px solid white',
+    borderRadius: '25px',
+    top: '20px', left: '20%', width: '40%', backgroundColor: '#171717', 
+    color: 'white', height: '40px', textAlign: 'center', paddingTop: '7px',
+    zIndex: 9999
+}}>You have 5 nominations</h3>);
 
 
 function useSearchMovies(): [MovieModel[], boolean, string | undefined, (search: string) => void] {
@@ -50,6 +62,7 @@ function SearchMovies() {
     const [movies, loading, error, searchMovie] = useSearchMovies();
     const [searchTerm, setSearchTerm] = useState('');
     const onSearchChange = (value: string) => setSearchTerm(value);
+    const [nominatedMovies, _] = useContext(NominatedContext);
 
     useEffect(() => {
         const typingDelay = 300;
@@ -76,7 +89,10 @@ function SearchMovies() {
 
     return (
         <div className={styles.Container}>
-            <div><h1>Shopify Award Show</h1></div>
+            <div>
+                {(nominatedMovies.length > 4) ? (<Msg/>) : undefined}
+                <h1>Shopify Award Show</h1>
+                </div>
             <div className={styles.SearchBar}>
                 <TextField placeholder='Search' value={searchTerm} onChange={onSearchChange}/>
                 <img className={styles.Clear} src={clear} alt='Clear text' onClick={clearSearch}/>

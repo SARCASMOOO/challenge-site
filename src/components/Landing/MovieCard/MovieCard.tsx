@@ -22,7 +22,7 @@ interface Props {
 
 function MovieCard({ movie, actionName, isNominated = false, className, onClick }: Props) {
 
-    const [nominatedMovies, _] = useContext(NominatedContext);
+    const [nominatedMovies, ] = useContext(NominatedContext);
     const cardImage = movie.imageSrc ?? placeholderImage;
     const imageStyle = movie.imageSrc ? undefined : styles.PlaceholderImage;
     const isNominatedStyle = isNominated ? styles.Nominated : undefined;

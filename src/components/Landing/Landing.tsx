@@ -15,9 +15,7 @@ import { NominatedProvider } from "../../global_state/nominatedMoviesGlobal";
 
 function Landing() {
     const [isOpen, setIsOpen] = useState(true);
-
     const toggleSideDrawer = () => setIsOpen(prevIsOpen => !prevIsOpen);
-
     const isOpenClass = isOpen ? styles.SideDrawerOpen : styles.SideDrawerClosed;
 
     return (
