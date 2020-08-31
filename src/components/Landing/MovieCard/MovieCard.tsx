@@ -23,6 +23,7 @@ interface Props {
 function MovieCard({ movie, actionName, isNominated = false, className, onClick }: Props) {
     const cardImage = movie.imageSrc ?? placeholderImage;
     const imageStyle = movie.imageSrc ? undefined : styles.PlaceholderImage;
+    const isNominatedStyle = isNominated ? styles.Nominated : undefined;
 
     return (
         <div className={className}>

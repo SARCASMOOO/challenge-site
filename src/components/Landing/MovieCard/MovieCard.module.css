@@ -12,6 +12,10 @@
     color: white;
 }
 
+.Movie:hover {
+    transform: scale(1.01)
+}
+
 .Image {
     height: 70%;
     background-repeat: no-repeat;
