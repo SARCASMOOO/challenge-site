@@ -2,9 +2,10 @@ import axios from 'axios';
 import MovieModel from '../models/MovieModel';
 
 class OmdbRequests {
-    private imdbURL = 'https://www.omdbapi.com/?i=tt3896198&apikey=';
+    private API_KEY = 'e79e7cb7';
+    private imdbURL = `https://www.omdbapi.com/?i=tt3896198&apikey=${this.API_KEY}`;
 
-    private url = (query: string) => `${this.imdbURL}e79e7cb7${query}`;
+    private url = (query: string) => `${this.imdbURL}${query}`;
 
     public async getMoviesBySearch(search: String, page: number) {
         const queryString = `&type=movie&page=${page}&s=${search}`;
