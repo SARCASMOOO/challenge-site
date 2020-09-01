@@ -1,8 +1,6 @@
 import axios from 'axios';
 import MovieModel from '../models/MovieModel';
 
-let config = require('../env.json');
-
 class OmdbRequests {
     private imdbURL = 'https://www.omdbapi.com/?i=tt3896198&apikey=';
 
